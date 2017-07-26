@@ -11,6 +11,8 @@ var Query = React.createClass({
         var parameters = $.param({
             'api-key': "ab3aa28c8add469ca323c6117aeffb45",
             'q': this.state.topic,
+            'begin_date': this.state.beginYear+"0101",
+            'end_date': this.state.endYear+"1231"
         });
 
         url += '?' + parameters;
@@ -32,7 +34,6 @@ var Query = React.createClass({
 
             temp.headline = articles[i].headline.main;
             temp.url = articles[i].web_url;
-            temp.date = articles[i].pub_date;
 
             bundle.push(temp);
 
@@ -63,7 +64,6 @@ var Query = React.createClass({
     },
 
     handleSubmit: function(event) {
-        alert('A name was submitted: ' + this.state.topic);
         this.updateShared(this.props.updateShared);
         //browserHistory.push('/some/path');
         event.preventDefault();

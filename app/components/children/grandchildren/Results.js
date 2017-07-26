@@ -9,6 +9,11 @@ var Link = require("react-router").Link;
 
 
 var Results = React.createClass({
+
+    clickButton: function(event){
+        alert(event.target.value);
+    },
+
     render: function() {
         // var rows = [];
         // console.log("what");
@@ -17,9 +22,23 @@ var Results = React.createClass({
         //     rows.push(<p>this.props.shared_var[i].headline</p>);
         //     console.log(this.props.shared_var[i]);
         // }
+        var temp = this;
 
         var articleComponents = this.props.shared_var.map(function(article) {
-            return <div key={article.url}>{article.headline}{article.date}{article.url}</div>;
+            return( 
+                <div className="row" key={article.url}>
+                    <div className="col-md-8">
+                        <h3>{article.headline}</h3>
+                        <p>{article.url}</p>
+                    </div>
+
+                    <div className="col-md-4">
+                        <button value={article.url} onClick={temp.clickButton} className="btn btn-primary">Save</button>
+                    </div>
+                    <br/>
+                    
+                </div>
+            );
         });
 
         return (

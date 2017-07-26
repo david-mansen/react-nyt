@@ -9,11 +9,6 @@ var ArticleSchema = new Schema({
     required: "Article Name is Required"
   },
 
-  date: {
-    type: Date,
-    default: Date.now
-  },
-  
   url: {
     type: String,
     trim: true,
